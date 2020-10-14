@@ -1,0 +1,14 @@
+.menu{
+  display: flex;
+  justify-content: center;
+  .title{
+    padding-top: 153px;
+  }
+  .content{
+    padding-top: 103px;
+    width: 688px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

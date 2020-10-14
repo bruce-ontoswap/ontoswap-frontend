@@ -1,0 +1,80 @@
+.el-button.el-button--default {
+  font-size: 16px;
+  height: 42px;
+  width: 100%;
+  border-radius: 4px;
+  border-color: #99CCFF;
+  color: #4A4A4A;
+  background-color: #99CCFF;
+  &.is-disabled {
+    border-color: #99CCFF;
+    background-color: #99CCFF;
+    opacity: 0.34;
+    &:hover, &:focus {
+      border-color: #99CCFF;
+      background-color: #99CCFF;
+      opacity: 0.34;
+    }
+  }
+  &:hover, &:focus {
+    border-color: #66b2ff;
+    color: #4A4A4A;
+    background-color: #66b2ff;
+  }
+}
+
+.el-collapse {
+  .el-collapse-item {
+    &.empty-content {
+      .el-collapse-item__header {
+        cursor: default;
+        &.is-active {
+          background-color: $color-11;
+        }
+      }
+
+      .el-collapse-item__content {
+        height: 0;
+        padding: 0!important;
+      }
+
+      .el-collapse-item__arrow {
+        display: none;
+      }
+    }
+  }
+}
+
+.el-dialog {
+  .el-dialog__header,
+  .el-dialog__body {
+    color: $color-text;
+    background-color: $color-10;
+  }
+
+  .el-dialog__header {
+    padding: 25px 30px 15px;
+    padding-right: 35px;
+    .el-dialog__title {
+      color: $color-text;
+    }
+  }
+
+  .el-dialog__body {
+    padding: 0 30px 35px;
+    color: $color-text;
+    background-color: $color-10;
+  }
+}
+
+.el-message {
+  top: $height-header + 5px !important;
+  border-width: 0 !important;
+  background-color: $color-10 !important;
+}
+
+.el-loading-mask {
+  .el-icon-loading {
+    font-size: 20px;
+  }
+}

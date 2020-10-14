@@ -1,0 +1,26 @@
+.unlock-wallet {
+  width: 140px;
+}
+.btn {
+  border-radius: 20px !important;
+  color: #1D1D1D;
+}
+.my-wallet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 96px;
+  }
+  p:nth-child(2) {
+    color: rgb(91, 57, 38);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 34px;
+    padding-top: 12px;
+  }
+  p:nth-child(3) {
+    color: rgb(170, 149, 133);
+    font-size: 16px;
+  }
+}
