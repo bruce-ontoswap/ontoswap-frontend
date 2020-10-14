@@ -37,7 +37,7 @@
         <p :class="$['card-sub-title']">SUSHI Earned</p>
         <Space height="22"/>
         <el-button
-          @click="putApprove"
+          @click="approve"
         >Approve UNI-ETH SLP</el-button>
       </div>
 

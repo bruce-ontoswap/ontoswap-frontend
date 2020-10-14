@@ -7,7 +7,7 @@
     </div>
     <Space width="32"/>
     <div :class="$.content">
-      <div v-for="(item, index) in menus" :key="index">
+      <div v-for="(item, index) in items" :key="index">
         <MenuCard :content="item"/>
       </div>
     </div>
