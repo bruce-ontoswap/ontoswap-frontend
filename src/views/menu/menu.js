@@ -19,21 +19,41 @@ export default {
         {
           title: this.$t('30'),
           type: 'UNI-ETH',
-          subTitle: `${this.$t('40')} UNI-ETH ${this.$t('50')}`,
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
           apy: '0.00',
           onTab: this.goMenuDetail
         },
         {
           title: this.$t('30'),
           type: 'UNI-ETH',
-          subTitle: `${this.$t('40')} UNI-ETH ${this.$t('50')}`,
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
           apy: '0.00',
           onTab: this.goMenuDetail
         },
         {
           title: this.$t('30'),
           type: 'UNI-ETH',
-          subTitle: `${this.$t('40')} UNI-ETH ${this.$t('50')}`,
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
+          apy: '0.00',
+          onTab: this.goMenuDetail
+        },{
+          title: this.$t('30'),
+          type: 'UNI-ETH',
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
+          apy: '0.00',
+          onTab: this.goMenuDetail
+        },
+        {
+          title: this.$t('30'),
+          type: 'UNI-ETH',
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
+          apy: '0.00',
+          onTab: this.goMenuDetail
+        },
+        {
+          title: this.$t('30'),
+          type: 'UNI-ETH',
+          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
           apy: '0.00',
           onTab: this.goMenuDetail
         },

@@ -46,11 +46,8 @@
 }
 
 .el-dialog {
-  .el-dialog__header,
-  .el-dialog__body {
-    color: $color-text;
-    background-color: $color-10;
-  }
+  background: #000000!important;
+  border-radius: 24px!important;
 
   .el-dialog__header {
     padding: 25px 30px 15px;
@@ -63,7 +60,6 @@
   .el-dialog__body {
     padding: 0 30px 35px;
     color: $color-text;
-    background-color: $color-10;
   }
 }
 

@@ -5,7 +5,7 @@
   <Space height="10"/>
   <p :class="$style['title']">{{content.title}}</p>
   <Space height="4"/>
-  <p :class="$style['sub-title']">{{content.subTitle}}</p>
+  <p :class="$style['sub-title']" v-html="content.subTitle"></p>
   <Space height="19"/>
   <p :class="$style['btn']" @click="content.onTab(content)">Select</p>
   <Space height="15"/>

@@ -47,7 +47,8 @@ const components = [
 components.forEach(component => Vue.use(component))
 
 const i18n = new VueI18n({
-  locale: navigator.language,
+  locale: 'en',
+  // locale: navigator.language,
   fallbackLocale: 'en',
   messages: {
     en: { ...en, ...enLocale },

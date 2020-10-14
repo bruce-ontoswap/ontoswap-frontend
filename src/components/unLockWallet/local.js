@@ -7,6 +7,11 @@ export default {
     50: 'View on Etherscan',
     60: 'Sign Out',
     70: 'Cancel',
+    80: 'Install Wallet',
+    90: "'You'll need to install'",
+    100: 'to continue. Once you have it installed, go ahead and',
+    110: 'refresh the page',
+    120: 'Install MetaMask',
   },
   zh: {
     10: 'UnLock Wallet',

@@ -1,6 +1,10 @@
 .menu{
   display: flex;
   justify-content: center;
+  background-image: url('../../assets/image/bg_menu.png');
+  background-repeat: repeat-y;
+  background-position: right top;
+  background-size: 627px 1024px;
   .title{
     padding-top: 153px;
   }

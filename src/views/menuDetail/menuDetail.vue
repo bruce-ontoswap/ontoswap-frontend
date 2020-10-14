@@ -41,6 +41,7 @@
       </div>
 
     </div>
+    <Deposit :dialogVisible="false"/>
   </div>
 </template>
 <style src="./menuDetail.scss" lang="scss" module="$"></style>

@@ -3,6 +3,7 @@ import Title from '../../components/title/title.vue'
 import SubTitle from '../../components/title/subTitle.vue'
 import Space from '../../components/space/space.vue'
 import MenuCard from '../../components/menuCard/menuCard.vue'
+import Deposit from '../../components/deposit/deposit.vue'
 
 export default {
   name: 'MenuDetail',
@@ -11,7 +12,8 @@ export default {
     Title,
     SubTitle,
     Space,
-    MenuCard
+    MenuCard,
+    Deposit
   },
   data() {
     return {

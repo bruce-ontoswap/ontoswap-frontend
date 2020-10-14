@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      metamaskDialogVisible: false,
       funsBalance: "0.0000"
     };
   },
@@ -32,6 +33,9 @@ export default {
     },
     cancel() {
       this.dialogVisible = false;
+    },
+    onRefesh() {
+      location.reload();
     },
   },
   computed: {

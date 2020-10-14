@@ -27,6 +27,7 @@
   }
   .app-body {
     padding-top: $height-header + $height-between-header-and-container;
+    padding-bottom: $height-footer;
   }
   .app-footer {
     position: absolute;
