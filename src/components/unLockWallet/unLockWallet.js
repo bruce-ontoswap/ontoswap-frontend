@@ -1,4 +1,5 @@
 import messages from './local'
+import {init, connect} from '../../funs/index'
 
 export default {
   i18n: { messages },
@@ -11,8 +12,10 @@ export default {
   },
   methods: {
     async unlockWallet() {
+      this.metamaskDialogVisible = !window.ethereum;
+
       if (typeof window.ethereum !== "undefined") {
-        if (!this.$store.state.wallet.address) {
+        if (this.$store.state.wallet.address) {
           this.dialogVisible = true;
         } else {
           await connect();
@@ -43,6 +46,7 @@ export default {
       return this.$store.state.wallet.address;
     },
     loginText() {
+      console.log(this.address);
       return this.$store.state.wallet.address
         ? this.$t("20")
         : this.$t("10");

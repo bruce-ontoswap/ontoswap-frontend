@@ -5,6 +5,8 @@ import Space from '../../components/space/space.vue'
 import MenuCard from '../../components/menuCard/menuCard.vue'
 import Deposit from '../../components/deposit/deposit.vue'
 
+import { putApprove } from '../../funs/index'
+
 export default {
   name: 'MenuDetail',
   i18n: { messages },
@@ -40,6 +42,11 @@ export default {
   methods: {
     goMenuDetail({type}){
       this.$router.push(`/menu/${type}`)
+    },
+    putApprove(){
+      putApprove('0x25c86769D5f41f65CD394497b4B9ac96fD7d1D9b').then(res => {
+
+      })
     }
   }
 }
