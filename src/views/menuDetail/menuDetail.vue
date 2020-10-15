@@ -20,9 +20,11 @@
         <Space height="26"/>
         <p :class="$['card-title']">0.00</p>
         <Space height="4"/>
-        <p :class="$['card-sub-title']">SUSHI Earned</p>
+        <p :class="$['card-sub-title']">ONTO Earned</p>
         <Space height="22"/>
         <el-button
+          @click="harvest"
+          :loading="harvesting"
         >Havest</el-button>
       </div>
 
@@ -34,15 +36,37 @@
         <Space height="26"/>
         <p :class="$['card-title']">0.00</p>
         <Space height="4"/>
-        <p :class="$['card-sub-title']">SUSHI Earned</p>
+        <p :class="$['card-sub-title']">{{type}} FLP Tokens Staked</p>
         <Space height="22"/>
-        <el-button
-          @click="approve"
-        >Approve UNI-ETH SLP</el-button>
+        <div :class="$['btn-box']">
+          <el-button
+            v-show="isApprove"
+            @click="approve"
+            :loading="approving"
+          >Approve {{type}} SLP</el-button>
+          <el-button
+            v-if="!isApprove"
+            class="btn" 
+            @click="unstake"
+            :loading="unstaking"
+          >Unstake</el-button>
+          <el-button
+            v-if="!isApprove"
+            class="btn" 
+            @click="stake"
+          >+</el-button>
+          </div>
       </div>
 
     </div>
-    <Deposit :dialogVisible="false"/>
+    <Deposit 
+      :dialogVisible="deposit.dialogVisible"
+      :available="deposit.available"
+      :onCancel="deposit.onCancel"
+      :onDeposit="deposit.onDeposit"
+      :pending="deposit.pending"
+
+    />
   </div>
 </template>
 <style src="./menuDetail.scss" lang="scss" module="$"></style>

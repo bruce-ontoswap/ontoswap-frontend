@@ -1,8 +1,8 @@
 import Web3 from 'web3'
 import store from '../store/index'
 import detectEthereumProvider from '@metamask/detect-provider'
-import { YFO_HASH, YFODIST_HASH, MAX_NUMBER } from '../config/constant'
-import yfoABI from './yfo.json'
+import { CONTRACT_PROVIDER, YFO_HASH, YFODIST_HASH, MAX_NUMBER } from '../config/constant'
+import abi from './yfo.json'
 import yfodistABI from './yfodist.json'
 import BigNumber from 'bignumber.js'
 
@@ -13,28 +13,21 @@ export const init = async () => {
     let web3 = new Web3(provider)
 
     const netVersion = await provider.request({ method: 'net_version' })
-    // console.log('netVersion', netVersion)
     store.commit('update:wallet', {
       name: 'MetaMask',
       netVersion
     })
 
     const accounts = await provider.request({ method: 'eth_accounts' })
-    // console.log('accounts', accounts)
     const address = accounts[0] || ''
     const checksumAddress = address && web3.utils.toChecksumAddress(address)
-    // console.log('checksumAddress', checksumAddress)
 
     const walletInfo = {
       name: 'MetaMask',
       installed: true,
     }
 
-    // if (process.env.NODE_ENV == 'development') {
-      walletInfo.address = checksumAddress
-    // } else {
-    //   walletInfo.address = netVersion == '1' ? checksumAddress : ''
-    // }
+    walletInfo.address = checksumAddress
     store.commit('update:wallet', walletInfo)
 
 
@@ -57,7 +50,6 @@ export const init = async () => {
     })
 
   } else {
-    console.log('Please install MetaMask!')
   }
 }
 
@@ -74,32 +66,16 @@ export const getContract = ({ provider, abi, contractHash }) => {
   return new web3.eth.Contract(abi, contractHash)
 }
 
-export const putHarvest = async (pid, callback) => {
-  try {
-    var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(chaplinABI, YFODIST_HASH)
-    await assetContract.methods
-      .claimAllRewards(pid)
-      .send({
-        from: store.state.wallet.address
-      }, callback)
-  } catch (e) {
-    return '0'
-  }
-}
-
 export const putApprove = async (pid, callback) => {
   try {
-    console.log(store.state.wallet.address);
     var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(yfoABI, pid)
+    const assetContract = new web3.eth.Contract(abi, pid)
     await assetContract.methods
       .approve(YFO_HASH, MAX_NUMBER)
       .send({
         from: store.state.wallet.address
-      })
+      }, callback)
   } catch (e) {
-    console.log(e);
     return '0'
   }
 }
@@ -122,25 +98,25 @@ export const getStakedLP = async (pid) => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
     contractHash: YFODIST_HASH,
-    abi: chaplinABI,
+    abi: yfodistABI,
   })
 
   try {
-    return await contract.methods.lpInfo(pid, store.state.wallet.address).call()
+    return await contract.methods.userInfo(pid, store.state.wallet.address).call()
   } catch (e) {
     return '0'
   }
 }
 
-export const getRewardLP = async () => {
+export const getRewardLP = async (hash) => {
   const contract = getContract({
     provider: CONTRACT_PROVIDER,
     contractHash: YFODIST_HASH,
-    abi: chaplinABI,
+    abi: yfodistABI,
   })
 
   try {
-    return await contract.methods.getRewards(store.state.wallet.address).call()
+    return await contract.methods.owner(hash, store.state.wallet.address).call()
   } catch (e) {
     return '0'
   }
@@ -156,18 +132,20 @@ export const getAllowance = async (contractHash, spendHash) => {
   try {
     return await contract.methods.allowance(store.state.wallet.address, spendHash).call()
   } catch (e) {
+
+    console.log(3, e);
     return '0'
   }
 }
 
-export const putDeposit = async (pid, amount, inviterAddress, callback) => {
+export const putDeposit = async (pid, amount, callback) => {
   try {
     const x = new BigNumber(10).pow(18)
     const _amount = x.multipliedBy(amount).toString()
     var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(chaplinABI, YFODIST_HASH)
+    const assetContract = new web3.eth.Contract(yfodistABI, YFODIST_HASH)
     await assetContract.methods
-      .deposit(pid, _amount, inviterAddress)
+      .deposit(pid, _amount)
       .send({
         from: store.state.wallet.address
       }, callback)
@@ -176,12 +154,14 @@ export const putDeposit = async (pid, amount, inviterAddress, callback) => {
   }
 }
 
-export const putWithdrawAll = async (pid, callback) => {
+export const putWithdrawAll = async (pid, amount, callback) => {
   try {
+    const x = new BigNumber(10).pow(18)
+    const _amount = x.multipliedBy(amount).toString()
     var web3 = new Web3(window.ethereum);
-    const assetContract = new web3.eth.Contract(chaplinABI, YFODIST_HASH)
+    const assetContract = new web3.eth.Contract(yfodistABI, YFODIST_HASH)
     await assetContract.methods
-      .withdrawAll(pid)
+      .withdraw(pid, _amount)
       .send({
         from: store.state.wallet.address
       }, callback)

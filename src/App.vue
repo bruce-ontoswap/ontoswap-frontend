@@ -40,9 +40,20 @@
 <script>
   import Header from '@/components/header/header.vue'
   import Footer from '@/components/footer/footer.vue'
-
+  import {init, connect} from './funs/index'
+  
   export default {
     name: 'App',
-    components: { Header, Footer }
+    components: { Header, Footer },
+    mounted() {
+      init().then(res => {
+        // const { netVersion } = this.$store.state.wallet
+        // const localNetVersion = localStorage.getItem('netVersion')
+        // if(localNetVersion === null && netVersion !== '1'){
+        //   localStorage.setItem('netVersion', netVersion)
+        //   location.reload();
+        // }
+      });
+    },
   }
 </script>

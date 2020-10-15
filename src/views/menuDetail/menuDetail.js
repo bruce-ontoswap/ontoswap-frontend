@@ -1,3 +1,4 @@
+import Vue from "vue";
 import messages from './locale'
 import Title from '../../components/title/title.vue'
 import SubTitle from '../../components/title/subTitle.vue'
@@ -6,8 +7,17 @@ import MenuCard from '../../components/menuCard/menuCard.vue'
 import Deposit from '../../components/deposit/deposit.vue'
 
 import { mapState } from "vuex";
-import { putApprove } from '../../funs/index'
-import { pairs } from '../../config/constant'
+import { pairs, YFO_HASH } from '../../config/constant'
+import { 
+  putApprove,
+  getAvaliableLP,
+  getStakedLP,
+  getRewardLP,
+  getAllowance,
+  putDeposit,
+  putWithdrawAll
+} from '../../funs/index'
+import { getDisplayBalance, getDisplayLP, getFullDisplayBalance } from "../../utils/format";
 
 export default {
   name: 'MenuDetail',
@@ -32,7 +42,7 @@ export default {
         available: 0,
         onCancel: this.onCancel,
         onDeposit: this.onDeposit,
-        depositing: false
+        pending: false
       },
       allowanceAmount: 0,
     }
@@ -69,44 +79,45 @@ export default {
     }
   },
   methods: {
-    getPresonInfo(){
-      
-    },getPresonInfo() {
+    getPresonInfo() {
       if (!this.$store.state.wallet.address) return;
-      getAvaliableLP(moods[this.type].hash).then(res => {
+      getAvaliableLP(pairs[this.type].hash).then(res => {
+        console.log('getAvaliableLP', res);
         this.deposit.available = getFullDisplayBalance(res);
       });
-      getStakedLP(moods[this.type].id).then(res => {
+      getStakedLP(pairs[this.type].id).then(res => {
+        console.log('getStakedLP', res);
         this.stakedLp = res.amount;
       });
-      getRewardLP(moods[this.type].hash).then(res => {
+      getRewardLP(pairs[this.type].id).then(res => {
+        console.log('getRewardLP', res);
         this.rewardsLp = getDisplayBalance(res);
       });
       const { netVersion, address } = this.$store.state.wallet
       const allowanceAmount = localStorage.getItem(`${this.type}-${address}-${netVersion}`)
       this.allowanceAmount = allowanceAmount || 0
-      this.getAllowance(moods[this.type].hash, CHAPLIN_CONTRACT_HASH)
+      this.getAllowance(pairs[this.type].hash, YFO_HASH)
     },
     harvest() {
       this.harvesting = true;
-      putHarvest(moods[this.type].id, (err, tx) => {
+      putWithdrawAll(pairs[this.type].id, 0, (err, tx) => {
         if(!err) {
           this.transferBoxVisible = true;
-          this.coinCode = 'FUNS';
-          this.coinAmount = this.rewardsLp;
+          this.coinCode = this.type + ' FLP';
+          this.coinAmount = this.stakedLp;
           this.tx = tx;
         }
       })
       .then(res => {
         this.harvesting = false;
-        getRewardLP(moods[this.type].hash).then(res => {
+        getRewardLP(pairs[this.type].id).then(res => {
           this.rewardsLp = getDisplayBalance(res);
         });
       });
     },
     approve() {
       this.approving = true;
-      putApprove(moods[this.type].hash, (err, tx) => {
+      putApprove(pairs[this.type].hash, (err, tx) => {
         if(!err) {
           this.transferBoxVisible = true;
           this.coinCode = '';
@@ -116,12 +127,12 @@ export default {
       })
       .then(res => {
         this.approving = false;
-        this.getAllowance(moods[this.type].hash, CHAPLIN_CONTRACT_HASH)
+        this.getAllowance(pairs[this.type].hash, YFO_HASH)
       });
     },
     unstake() {
       this.unstaking = true;
-      putWithdrawAll(moods[this.type].id, (err, tx) => {
+      putWithdrawAll(pairs[this.type].id, this.stakedLp, (err, tx) => {
         if(!err) {
           this.transferBoxVisible = true;
           this.coinCode = this.type + ' FLP';
@@ -131,10 +142,10 @@ export default {
       })
       .then(res => {
         this.unstaking = false;
-        getStakedLP(moods[this.type].id).then(res => {
+        getStakedLP(pairs[this.type].id).then(res => {
           this.stakedLp = res.amount;
         });
-        getAvaliableLP(moods[this.type].hash).then(res => {
+        getAvaliableLP(pairs[this.type].hash).then(res => {
           this.deposit.available = getFullDisplayBalance(res);
         });
       });
@@ -143,10 +154,9 @@ export default {
       this.deposit.dialogVisible = true;
     },
     onDeposit(amount) {
-      const referrer = localStorage.getItem("referrer");
-      this.deposit.depositing = true;
-      putDeposit(moods[this.type].id, amount, referrer || defaultAddress, (err, tx) => {
-        this.deposit.depositing = false;
+      this.deposit.pending = true;
+      putDeposit(pairs[this.type].id, amount, (err, tx) => {
+        this.deposit.pending = false;
         this.deposit.dialogVisible = false;
 
         if(!err) {
@@ -159,10 +169,10 @@ export default {
         }
       })
       .then(res => {
-          getStakedLP(moods[this.type].id).then(res => {
+          getStakedLP(pairs[this.type].id).then(res => {
             this.stakedLp = res.amount;
           });
-          getAvaliableLP(moods[this.type].hash).then(res => {
+          getAvaliableLP(pairs[this.type].hash).then(res => {
             this.deposit.available = getFullDisplayBalance(res);
           });
         }
@@ -172,8 +182,10 @@ export default {
       this.deposit.dialogVisible = false;
     },
     getAllowance(addressHash, spendHash) {
+      console.log(1);
       getAllowance(addressHash, spendHash).then(res => {
         this.allowanceAmount = res;
+        console.log(2, res);
         const { netVersion, address } = this.$store.state.wallet
         localStorage.setItem(`${this.type}-${address}-${netVersion}`, this.allowanceAmount)
       });

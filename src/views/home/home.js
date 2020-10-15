@@ -18,14 +18,14 @@ export default {
       balanceContent: {
         title: this.$t('40'),
         subTitle: this.$t('50'),
-        number: 1,
-        subNumber: 1,
+        number: 9999.82,
+        subNumber: 502898899,
       },
       totalSupplyContent: {
         title: this.$t('60'),
         subTitle: this.$t('70'),
-        number: 2,
-        subNumber: 2,
+        number: 8965588966,
+        subNumber: 578956523623,
       },
     }
   },

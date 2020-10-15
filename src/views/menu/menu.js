@@ -17,29 +17,6 @@ export default {
   data() {
     return {
       items: [],
-      menus: [
-        {
-          title: this.$t('30'),
-          type: 'UNI-ETH',
-          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
-          apy: '0.00',
-          onTab: this.goMenuDetail
-        },
-        {
-          title: this.$t('30'),
-          type: 'UNI-ETH',
-          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
-          apy: '0.00',
-          onTab: this.goMenuDetail
-        },
-        {
-          title: this.$t('30'),
-          type: 'UNI-ETH',
-          subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
-          apy: '0.00',
-          onTab: this.goMenuDetail
-        }
-      ]
     }
   },
   mounted() {
@@ -52,16 +29,16 @@ export default {
     formatItems() {
       const tmp = [
         {
-          title: "FUNS Surprise!",
-          type: "pid_0",
+          type: 'OSWAP-USDT',
+          subTitle: `Deposit OSWAP-USDT SLP<br />Earn SUSHI`,
         },
         {
-          title: "USDT-ETH",
-          type: "pid_1",
+          type: 'YFO-USDT',
+          subTitle: `Deposit YFO-USDT SLP<br />Earn SUSHI`,
         },
         {
-          title: "USDC-USDT",
-          type: "pid_2",
+          type: 'DAI-USDT',
+          subTitle: `Deposit DAI-USDT SLP<br />Earn SUSHI`,
         }
       ];
 
@@ -69,8 +46,7 @@ export default {
         ...item, 
         ...pairs[item.type], 
         title: this.$t('30'),
-        subTitle: `Deposit UNI-ETH SLP<br />Earn SUSHI`,
-        apy: '0.00',
+        apy: '200.00',
         onTab: this.goMenuDetail
       }));
     },

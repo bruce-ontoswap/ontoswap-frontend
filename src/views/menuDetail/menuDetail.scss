@@ -44,6 +44,16 @@
         color: #4A4A4A;
         line-height: 23px;
       }
+      .btn-box{
+        display: flex;
+        button{
+          margin-left: 0;
+        }
+        button:nth-child(3){
+          width: 40px;
+          margin-left: 20px;
+        }
+      }
     }
   }
 }
