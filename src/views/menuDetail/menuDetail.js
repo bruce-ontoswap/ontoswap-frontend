@@ -7,7 +7,7 @@ import MenuCard from '../../components/menuCard/menuCard.vue'
 import Deposit from '../../components/deposit/deposit.vue'
 
 import { mapState } from "vuex";
-import { pairs, YFO_HASH } from '../../config/constant'
+import { pairs, YFODIST_HASH } from '../../config/constant'
 import { 
   putApprove,
   getAvaliableLP,
@@ -89,22 +89,19 @@ export default {
     getPresonInfo() {
       if (!this.$store.state.wallet.address) return;
       getAvaliableLP(pairs[this.type].hash).then(res => {
-        console.log('getAvaliableLP', res);
         this.deposit.available = getFullDisplayBalance(res);
       });
       getStakedLP(pairs[this.type].id).then(res => {
-        console.log('getStakedLP', res);
         this.stakedLp = res.amount;
         this.unstakeContent.available = getFullDisplayBalance(res.amount);
       });
       getRewardLP(pairs[this.type].id).then(res => {
-        console.log('getRewardLP', res);
         this.rewardsLp = getDisplayBalance(res);
       });
       const { netVersion, address } = this.$store.state.wallet
       const allowanceAmount = localStorage.getItem(`${this.type}-${address}-${netVersion}`)
       this.allowanceAmount = allowanceAmount || 0
-      this.getAllowance(pairs[this.type].hash, YFO_HASH)
+      this.getAllowance(pairs[this.type].hash, YFODIST_HASH)
     },
     harvest() {
       this.harvesting = true;
@@ -135,14 +132,13 @@ export default {
       })
       .then(res => {
         this.approving = false;
-        this.getAllowance(pairs[this.type].hash, YFO_HASH)
+        this.getAllowance(pairs[this.type].hash, YFODIST_HASH)
       });
     },
     unstake() {
       this.unstakeContent.dialogVisible = true;
     },
     onUnstake(amount) {
-      console.log(111);
       this.unstakeContent.pending = true;
       putWithdrawAll(pairs[this.type].id, amount, (err, tx) => {
         if(!err) {
@@ -154,6 +150,7 @@ export default {
       })
       .then(res => {
         this.unstakeContent.pending = false;
+        this.unstakeContent.dialogVisible = false;
         getStakedLP(pairs[this.type].id).then(res => {
           this.stakedLp = res.amount;
           this.unstakeContent.available = getFullDisplayBalance(res.amount);

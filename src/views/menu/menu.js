@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     goMenuDetail({type}){
+      if(!this.$store.state.wallet.address) return this.$message('Pelese Unlock Wallet!')
       this.$router.push(`/menu/${type}`)
     },
     formatItems() {

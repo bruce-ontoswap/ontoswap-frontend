@@ -1,5 +1,6 @@
 import messages from './local'
-import {init, connect} from '../../funs/index'
+import {init, connect, getAvailableBalance} from '../../funs/index'
+import { getDisplayBalance } from "../../utils/format";
 
 export default {
   i18n: { messages },
@@ -46,7 +47,6 @@ export default {
       return this.$store.state.wallet.address;
     },
     loginText() {
-      console.log(this.address);
       return this.$store.state.wallet.address
         ? this.$t("20")
         : this.$t("10");
@@ -55,16 +55,16 @@ export default {
   watch: {
     address(address) {
       if(address) {
-        // getFunsAvailableBalance().then(res => {
-        //   this.funsBalance = getDisplayBalance(res);
-        // });
+        getAvailableBalance().then(res => {
+          this.funsBalance = getDisplayBalance(res);
+        });
       }
     },
     dialogVisible(state) {
       if(state) {
-        // getFunsAvailableBalance().then(res => {
-        //   this.funsBalance = getDisplayBalance(res);
-        // })
+        getAvailableBalance().then(res => {
+          this.funsBalance = getDisplayBalance(res);
+        })
       }
     }
   }

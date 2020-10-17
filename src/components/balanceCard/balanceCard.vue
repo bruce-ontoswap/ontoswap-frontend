@@ -1,10 +1,13 @@
 <template>
 <div :class="$style['card']">
   <p :class="$style['title']">{{content.title}}</p>
-  <p :class="$style['number']">{{content.number}}</p>
+  <p :class="$style['number']">
+    <CountUp :endVal="content.number" :lock="content.lock" />
+  </p>
   <div :class="$style['sub-card']">
     <p :class="$style['sub-title']">{{content.subTitle}}</p>
-    <p :class="$style['sub-number']">{{content.subNumber}} YFO</p>
+    <p :class="$style['sub-number']">
+      <CountUp :endVal="content.subNumber" :lock="content.lock" /> YFO</p>
   </div>
 </div>
 </template>
@@ -44,10 +47,14 @@
 </style>
 
 <script>
+import CountUp from '../countup/countUp'
 export default {
   name: 'BalanceCard',
   props: {
     content: Object,
+  },
+  components: {
+    CountUp
   },
 };
 </script>
