@@ -1,22 +1,22 @@
-export const YFO_HASH = '0xF0E841b7B1Ff20FDD766E4302d40C3D4f3aB5Dd1'
-export const YFODIST_HASH = '0xc68aF355BC33A641eB917BC5b866eD9DB6340f3e'
+export const YFO_HASH = '0x93E184b90EE3ABFecB97CB2708aB3D214551b797'
+export const YFODIST_HASH = '0x5a4d492A15C957A5d8eE5C84aAF15E48833854ca'
 export const MAX_NUMBER = '115792089237316195423570985008687907853269984665640564039457584007913129639935'
-export const CONTRACT_PROVIDER = 'wss://ropsten.infura.io/ws/v3/14857e4c7ca54e26b8b1ec1674753ab9'
+export const CONTRACT_PROVIDER = 'wss://ropsten.infura.io/ws/v3/3f27afaede7c48d6bec4fd2fb4534ee2'
 
 export const pairs = {
   'OSWAP-USDT': {
     id: 0,
-    hash: "0x4F2e47fE9C75B34ED119FEDd0CDf815853DcC6f4",
+    hash: "0xE280d9e0a21d47A6c30608F57eC36ACAecfc3f4F",
     approveText: "OSWAP-USDT",
   },
   'YFO-USDT': {
     id: 1,
-    hash: "0xd13D09aa5609D5df7DfA4A43A3A87703018910FD",
+    hash: "0x5eFb0da6f74BFDf72251504d9737ac27D286c6cF",
     approveText: "YFO-USDT",
   },
   'DAI-USDT': {
     id: 2,
-    hash: "0xdaA13b81b5AB82CcDF10831c3094E7DEfF890997",
+    hash: "0x1BF39399FC3cDb6ace84466f066Bddb110A040a8",
     approveText: "pid_2",
   },
 }

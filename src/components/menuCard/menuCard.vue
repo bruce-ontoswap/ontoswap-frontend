@@ -1,3 +1,13 @@
+<i18n>
+{
+  "en": {
+    "10": "Select"
+  },
+  "zh": {
+    "10": "选择"
+  }
+}
+</i18n>
 <template>
 <div :class="$style['card']">
   <Space height="24"/>
@@ -7,7 +17,7 @@
   <Space height="4"/>
   <p :class="$style['sub-title']" v-html="content.subTitle"></p>
   <Space height="19"/>
-  <p :class="$style['btn']" @click="content.onTab(content)">Select</p>
+  <p :class="$style['btn']" @click="content.onTab(content)">{{$t('10')}}</p>
   <Space height="15"/>
   <p :class="$style['gap']"></p>
   <Space height="6"/>

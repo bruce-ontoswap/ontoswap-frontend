@@ -4,7 +4,7 @@
   <p :class="$style['number']">{{content.number}}</p>
   <div :class="$style['sub-card']">
     <p :class="$style['sub-title']">{{content.subTitle}}</p>
-    <p :class="$style['sub-number']">{{content.subNumber}} ONTO</p>
+    <p :class="$style['sub-number']">{{content.subNumber}} YFO</p>
   </div>
 </div>
 </template>

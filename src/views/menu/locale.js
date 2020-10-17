@@ -1,22 +1,14 @@
 export default {
   en: {
     10: 'Menu',
-    20: 'Earn SUSHI tokens by staking SushiSwap V2 SLP Tokens. Note: Current APY does not include 2/3rd SUSHI emission that is locked and will be retroactively disbursed at a later date.',
-    30: 'UNI Unicorn',
-    40: 'Deposit',
-    50: 'SLP Earn SUSHI',
-    60: '',
-    70: '',
+    20: 'Earn YFO tokens by staking Ontoswap SLP Tokens,including OSWAP-USDT, YFO-USDT, DAI-USDT.',
+    30: 'Deposit',
+    40: 'Earn',
   },
   zh: {
     10: 'Menu',
-    20: 'Earn SUSHI tokens by staking SushiSwap V2 SLP Tokens. Note: Current APY does not include 2/3rd SUSHI emission that is locked and will be retroactively disbursed at a later date.',
-    30: 'UNI Unicorn',
-    40: 'Deposit',
-    50: 'SLP Earn SUSHI',
-    40: '',
-    50: '',
-    60: '',
-    70: '',
+    20: '质押Ontoswap SLP通证领取您自己的YFO,支持以下三种：OSWAP-USDT,YFO-USDT, DAI-USDT.',
+    30: '质押',
+    40: '获取',
   },
 }

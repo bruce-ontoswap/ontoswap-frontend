@@ -5,7 +5,7 @@
       <router-link to="/">{{$t('10')}}</router-link>
       <router-link to="/menu">{{$t('20')}}</router-link>
       <!-- <router-link to="/staking">{{$t('30')}}</router-link> -->
-      <a href="" target="view_window">{{$t('40')}}</a>
+      <a href="https://github.com/ontoswap/docs/blob/master/ONTOSWAP.pdf" target="view_window">{{$t('40')}}</a>
     </div>
     <div :class="$.wallet">
       <UnLockWallet />

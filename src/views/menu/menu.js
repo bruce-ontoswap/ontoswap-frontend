@@ -22,6 +22,11 @@ export default {
   mounted() {
     this.formatItems()
   },
+  watch: {
+    '$i18n.locale'() {
+      this.formatItems()
+    },
+  },
   methods: {
     goMenuDetail({type}){
       this.$router.push(`/menu/${type}`)
@@ -30,22 +35,24 @@ export default {
       const tmp = [
         {
           type: 'OSWAP-USDT',
-          subTitle: `Deposit OSWAP-USDT SLP<br />Earn SUSHI`,
+          title: 'Oswap',
+          subTitle: `${this.$t('30')} OSWAP-USDT SLP<br />${this.$t('40')} YFO`,
         },
         {
           type: 'YFO-USDT',
-          subTitle: `Deposit YFO-USDT SLP<br />Earn SUSHI`,
+          title: 'YFO',
+          subTitle: `${this.$t('30')} YFO-USDT SLP<br />${this.$t('40')} YFO`,
         },
         {
           type: 'DAI-USDT',
-          subTitle: `Deposit DAI-USDT SLP<br />Earn SUSHI`,
+          title: 'DAI',
+          subTitle: `${this.$t('30')} DAI-USDT SLP<br />${this.$t('40')} YFO`,
         }
       ];
 
       this.items = tmp.map((item, index) => ({
         ...item, 
         ...pairs[item.type], 
-        title: this.$t('30'),
         apy: '200.00',
         onTab: this.goMenuDetail
       }));

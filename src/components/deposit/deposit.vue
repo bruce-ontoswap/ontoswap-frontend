@@ -21,16 +21,16 @@
 <template>
   <el-dialog
     width="600px"
-    title="Deposit ONTO Tokens "
+    :title="`${$t('text12')} ${type} Tokens`"
     :visible="dialogVisible"
     :center="true"
     :show-close="false"
     :before-close="onCancel"
   >
-    <p :class="$style['available']">{{available}} ONTO {{$t('text15')}}</p>
+    <p :class="$style['available']">{{available}} {{type}} {{$t('text15')}}</p>
     <div :class="$style['input-amount']">
       <el-input v-model="input" :placeholder="$t('text14')"></el-input>
-      <p>ONTO</p>
+      <p>{{type}}</p>
       <el-button
         @click="setMax"
       >{{$t('text10')}}</el-button>
@@ -54,6 +54,7 @@ export default {
     "pending",
     "onCancel",
     "onDeposit",
+    "type",
   ],
   data() {
     return {
