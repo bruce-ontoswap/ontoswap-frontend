@@ -11,15 +11,13 @@ html, body {
   min-height: 100%;
   line-height: 24px;
   color: $color-text;
-  background-color: #1D1D1D;
+  background-color: $color-20;
 }
 
 a {
-  color: $color-link;
   text-decoration: none;
   transition: color .3s;
   &:hover {
-    color: $color-link-hover;
     transition: color .3s;
   }
 }

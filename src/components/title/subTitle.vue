@@ -5,9 +5,9 @@
 <style lang="scss" module>
   .sub-title{
     font-size: 16px;
-    font-family: Inter-Regular_Light, Inter;
+    font-family: $font-1;
     font-weight: normal;
-    color: #FFFFFF;
+    color: $color-text;
     line-height: 24px;
   }
 </style>

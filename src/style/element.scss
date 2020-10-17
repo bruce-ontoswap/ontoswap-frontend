@@ -3,22 +3,22 @@
   height: 42px;
   width: 100%;
   border-radius: 4px;
-  border-color: #99CCFF;
-  color: #4A4A4A;
-  background-color: #99CCFF;
+  border-color: $color-text-blue;
+  color: $color-text-grey-1;
+  background-color: $color-text-blue;
   &.is-disabled {
-    border-color: #99CCFF;
-    background-color: #99CCFF;
+    border-color: $color-text-blue;
+    background-color: $color-text-blue;
     opacity: 0.34;
     &:hover, &:focus {
-      border-color: #99CCFF;
-      background-color: #99CCFF;
+      border-color: $color-text-blue;
+      background-color: $color-text-blue;
       opacity: 0.34;
     }
   }
   &:hover, &:focus {
     border-color: #66b2ff;
-    color: #4A4A4A;
+    color: $color-text-grey-1;
     background-color: #66b2ff;
   }
 }
@@ -29,7 +29,7 @@
       .el-collapse-item__header {
         cursor: default;
         &.is-active {
-          background-color: $color-11;
+          background-color: $color-10;
         }
       }
 
@@ -46,7 +46,7 @@
 }
 
 .el-dialog {
-  background: #000000!important;
+  background: $color-10!important;
   border-radius: 24px!important;
 
   .el-dialog__header {

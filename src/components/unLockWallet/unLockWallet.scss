@@ -3,7 +3,7 @@
 }
 .btn {
   border-radius: 20px !important;
-  color: #1D1D1D;
+  color: $color-20;
 }
 .my-wallet {
   display: flex;
@@ -17,16 +17,16 @@
     font-weight: 700;
     padding-top: 46px;
     font-size: 44px;
-    font-family: OriyaMN;
-    color: #99CCFF;
+    font-family: $font-2;
+    color: $color-text-blue;
     line-height: 53px;
     
   }
   p:nth-child(3) {
     padding-top: 12px;
-    font-family: Inter-Regular, Inter;
+    font-family: $font-3;
     font-weight: 400;
-    color: #4A4A4A;
+    color: $color-text-grey-1;
     line-height: 23px;
   }
 

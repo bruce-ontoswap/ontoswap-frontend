@@ -16,31 +16,31 @@
 .card{
   width: 441px;
   height: 180px;
-  background: #000000;
+  background: $color-10;
   border-radius: 24px;
   padding: 25px 24px;
   .title{
-    font-family: Inter-Regular_Light, Inter;
-    color: #4A4A4A;
+    font-family: $font-1;
+    color: $color-text-grey-1;
   }
   .number{
     font-size: 44px;
-    font-family: OriyaMN;
-    color: #99CCFF;
+    font-family: $font-2;
+    color: $color-text-blue;
     line-height: 72px;
-    border-bottom: 1px solid #1D1D1D;
+    border-bottom: 1px solid $color-20;
   }
   .sub-card{
     display: flex;
     justify-content: space-between;
     margin-top: 12px;
     .sub-title{
-      font-family: Inter-Regular_Light, Inter;
-      color: #4A4A4A;
+      font-family: $font-1;
+      color: $color-text-grey-1;
     }
     .sub-number{
-      font-family: OriyaMN;
-      color: #99CCFF;
+      font-family: $font-2;
+      color: $color-text-blue;
     }
   }
 }

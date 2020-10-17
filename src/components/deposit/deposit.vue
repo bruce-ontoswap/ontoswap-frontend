@@ -85,9 +85,9 @@ export default {
 <style lang="scss" module>
 .available {
   text-align: right;
-  font-family: Inter-Regular, Inter;
+  font-family: $font-3;
   font-weight: 400;
-  color: #4A4A4A;
+  color: $color-text-grey-1;
   line-height: 23px;
 }
 .input-amount {
@@ -95,16 +95,16 @@ export default {
   align-items: center;
   margin: 20px 0 10px 0;
   padding: 8px; 
-  background: #1D1D1D;
+  background: $color-20;
   border-radius: 4px;
   div{
     input {
-      background: #1D1D1D;
+      background: $color-20;
       border: none;
       font-size: 16px;
       font-family: Inter-Medium, Inter;
       font-weight: 500;
-      color: #FFFFFF;
+      color: $color-text;
     }
   }
   p:nth-child(2) {

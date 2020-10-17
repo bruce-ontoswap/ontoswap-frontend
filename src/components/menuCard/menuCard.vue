@@ -45,7 +45,7 @@ export default {
 .card{
   width: 328px;
   height: 310px;
-  background: #000000;
+  background: $color-10;
   border-radius: 24px;
   padding: 25px 24px;
   text-align: center;
@@ -54,19 +54,19 @@ export default {
     font-size: 65px;
   }
   .title{
-    font-family: Inter-Regular, Inter;
+    font-family: $font-3;
   }
   .sub-title{
-    font-family: Inter-Regular, Inter;
-    color: #4A4A4A;
+    font-family: $font-3;
+    color: $color-text-grey-1;
     line-height: 23px;
   }
   .btn{
     width: 283px;
     height: 44px;
-    background: #99CCFF;
+    background: $color-text-blue;
     border-radius: 4px;
-    color: #4A4A4A;
+    color: $color-text-grey-1;
     line-height: 44px;
     cursor: pointer;
     :hover{
@@ -74,18 +74,18 @@ export default {
     }
   }
   .gap{
-    border-bottom: 1px solid #1D1D1D;
+    border-bottom: 1px solid $color-20;
   }
   .apy{
     display: flex;
     justify-content: space-between;
     :nth-child(1){
-      font-family: Inter-Regular, Inter;
-      color: #4A4A4A;
+      font-family: $font-3;
+      color: $color-text-grey-1;
     }
     :nth-child(2){
-      font-family: OriyaMN;
-      color: #99CCFF;
+      font-family: $font-2;
+      color: $color-text-blue;
     }
   }
 }

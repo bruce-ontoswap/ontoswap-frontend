@@ -13,19 +13,19 @@
       width: 348px;
       :nth-child(3){
         font-family: PingFangSC-Light, PingFang SC;
-        color: #424242;
+        color: $color-text-grey;
         line-height: 26px;
       }
       :nth-child(5){
-        font-family: Inter-Regular_Light, Inter;
-        color: #99CCFF;
+        font-family: $font-1;
+        color: $color-text-blue;
         line-height: 26px;
       }
     }
     .card{
       width: 328px;
       height: 310px;
-      background: #000000;
+      background: $color-10;
       border-radius: 24px;
       padding: 25px 24px;
       text-align: center;
@@ -34,14 +34,14 @@
       }
       .card-title{
         font-size: 44px;
-        font-family: OriyaMN;
-        color: #99CCFF;
+        font-family: $font-2;
+        color: $color-text-blue;
         line-height: 53px;
 
       }
       .card-sub-title{
-        font-family: Inter-Regular, Inter;
-        color: #4A4A4A;
+        font-family: $font-3;
+        color: $color-text-grey-1;
         line-height: 23px;
       }
       .btn-box{

@@ -11,7 +11,7 @@
     font-size: 64px;
     font-family: Inter-ExtraBold, Inter;
     font-weight: 800;
-    color: #FFFFFF;
+    color: $color-text;
     line-height: 77px;
     div{
       z-index: 1;
