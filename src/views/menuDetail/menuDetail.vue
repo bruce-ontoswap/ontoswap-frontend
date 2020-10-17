@@ -18,7 +18,7 @@
         <Space height="32"/>
         <span :class="$['card-img']">🍣</span>
         <Space height="26"/>
-        <p :class="$['card-title']">0.00</p>
+        <p :class="$['card-title']">{{rewardsLp}}</p>
         <Space height="4"/>
         <p :class="$['card-sub-title']">YFO {{$t('60')}}</p>
         <Space height="22"/>
@@ -34,7 +34,7 @@
         <Space height="32"/>
         <span :class="$['card-img']">‍🍳</span>
         <Space height="26"/>
-        <p :class="$['card-title']">0.00</p>
+        <p :class="$['card-title']">{{formatDisplay(stakedLp)}}</p>
         <Space height="4"/>
         <p :class="$['card-sub-title']">{{type}} FLP {{$t('80')}}</p>
         <Space height="22"/>
@@ -66,6 +66,15 @@
       :onDeposit="deposit.onDeposit"
       :pending="deposit.pending"
       :type="type"
+    />
+    <Deposit 
+      :dialogVisible="unstakeContent.dialogVisible"
+      :available="unstakeContent.available"
+      :onCancel="unstakeContent.onCancel"
+      :onDeposit="unstakeContent.onDeposit"
+      :pending="unstakeContent.pending"
+      :type="type"
+      :unstake="true"
     />
   </div>
 </template>

@@ -44,6 +44,13 @@ export default {
         onDeposit: this.onDeposit,
         pending: false
       },
+      unstakeContent: {
+        dialogVisible: false,
+        available: 0,
+        onCancel: this.onCancelUnstake,
+        onDeposit: this.onUnstake,
+        pending: false
+      },
       allowanceAmount: 0,
     }
   },
@@ -88,6 +95,7 @@ export default {
       getStakedLP(pairs[this.type].id).then(res => {
         console.log('getStakedLP', res);
         this.stakedLp = res.amount;
+        this.unstakeContent.available = getFullDisplayBalance(res.amount);
       });
       getRewardLP(pairs[this.type].id).then(res => {
         console.log('getRewardLP', res);
@@ -131,24 +139,32 @@ export default {
       });
     },
     unstake() {
-      this.unstaking = true;
-      putWithdrawAll(pairs[this.type].id, this.stakedLp, (err, tx) => {
+      this.unstakeContent.dialogVisible = true;
+    },
+    onUnstake(amount) {
+      console.log(111);
+      this.unstakeContent.pending = true;
+      putWithdrawAll(pairs[this.type].id, amount, (err, tx) => {
         if(!err) {
           this.transferBoxVisible = true;
           this.coinCode = this.type + ' FLP';
-          this.coinAmount = this.stakedLp;
+          this.coinAmount = amount;
           this.tx = tx;
         }
       })
       .then(res => {
-        this.unstaking = false;
+        this.unstakeContent.pending = false;
         getStakedLP(pairs[this.type].id).then(res => {
           this.stakedLp = res.amount;
+          this.unstakeContent.available = getFullDisplayBalance(res.amount);
         });
         getAvaliableLP(pairs[this.type].hash).then(res => {
           this.deposit.available = getFullDisplayBalance(res);
         });
       });
+    },
+    onCancelUnstake(){
+      this.unstakeContent.dialogVisible = false;
     },
     stake() {
       this.deposit.dialogVisible = true;
@@ -171,6 +187,7 @@ export default {
       .then(res => {
           getStakedLP(pairs[this.type].id).then(res => {
             this.stakedLp = res.amount;
+            this.unstakeContent.available = getFullDisplayBalance(res.amount);
           });
           getAvaliableLP(pairs[this.type].hash).then(res => {
             this.deposit.available = getFullDisplayBalance(res);
@@ -182,10 +199,8 @@ export default {
       this.deposit.dialogVisible = false;
     },
     getAllowance(addressHash, spendHash) {
-      console.log(1);
       getAllowance(addressHash, spendHash).then(res => {
         this.allowanceAmount = res;
-        console.log(2, res);
         const { netVersion, address } = this.$store.state.wallet
         localStorage.setItem(`${this.type}-${address}-${netVersion}`, this.allowanceAmount)
       });

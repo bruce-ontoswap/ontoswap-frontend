@@ -6,7 +6,8 @@
     "text12": "DEPOSIT",
     "text13": "WITHDRAW",
     "text14": "Enter the amount",
-    "text15": "Available"
+    "text15": "Available",
+    "text16": "Unstake"
   },
   "zh": {
     "text10": "最大值",
@@ -14,14 +15,15 @@
     "text12": "质押",
     "text13": "解押",
     "text14": "请输入数量",
-    "text15": "可用"
+    "text15": "可用",
+    "text16": "解押"
   }
 }
 </i18n>
 <template>
   <el-dialog
     width="600px"
-    :title="`${$t('text12')} ${type} Tokens`"
+    :title="`${unstake ? $t('text16') : $t('text12')} ${type} Tokens`"
     :visible="dialogVisible"
     :center="true"
     :show-close="false"
@@ -39,7 +41,7 @@
       <el-button
         @click="deposit"
         :loading="pending"
-      >{{$t('text12')}}</el-button>
+      >{{unstake ? $t('text16') : $t('text12')}}</el-button>
       <el-button
         @click="onCancel"
       >{{$t('text11')}}</el-button>
@@ -55,6 +57,7 @@ export default {
     "onCancel",
     "onDeposit",
     "type",
+    "unstake",
   ],
   data() {
     return {
