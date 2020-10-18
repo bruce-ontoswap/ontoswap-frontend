@@ -29,7 +29,7 @@
 
     <el-dialog width="400px" :title="$t('30')" :visible.sync="dialogVisible" :append-to-body="true">
       <div :class="$['my-wallet']">
-        <p>🍣</p>
+        <img :class="$['img']" :src="require(`../../assets/image/YFO.png`)"/>
         <p>{{funsBalance}}</p>
         <p>{{$t('40')}}</p>
         <el-button
