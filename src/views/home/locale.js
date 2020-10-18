@@ -1,7 +1,7 @@
 export default {
   en: {
     10: 'Contract-Fillable Liquidity',
-    20: 'Stake SushiSwap LP tokens to claim your very own yummy SUSHI!',
+    20: 'Stake Ontoswap LP tokens to claim your very own YFO!',
     30: 'Pro Tip: SUSHI-ETH SLP token pool yields 4.8x more token rewards per block.',
     40: 'Your YFO Balance',
     50: 'Pending harvest',

@@ -76,7 +76,7 @@ export const putApprove = async (pid, callback) => {
         from: store.state.wallet.address
       }, callback)
   } catch (e) {
-    return '0'
+    throw new Error('')
   }
 }
 

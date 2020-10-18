@@ -36,7 +36,7 @@ export default {
       const tmp = [
         {
           type: 'OSWAP-USDT',
-          title: 'Oswap',
+          title: 'OSWAP',
           subTitle: `${this.$t('30')} OSWAP-USDT SLP<br />${this.$t('40')} YFO`,
         },
         {

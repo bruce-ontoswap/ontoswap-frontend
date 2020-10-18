@@ -7,7 +7,7 @@ import MenuCard from '../../components/menuCard/menuCard.vue'
 import Deposit from '../../components/deposit/deposit.vue'
 
 import { mapState } from "vuex";
-import { pairs, YFODIST_HASH } from '../../config/constant'
+import { pairs, YFODIST_HASH, MAX_NUMBER } from '../../config/constant'
 import { 
   putApprove,
   getAvaliableLP,
@@ -69,7 +69,13 @@ export default {
       return pairs[this.type] && pairs[this.type].hash;
     },
     pid() {
-      return pairs[this.type] && pairs[this.type].pid;
+      return pairs[this.type] && pairs[this.type].id;
+    },
+    harvestimg() {
+      return this.type && require(`../../assets/image/${this.type.split('-')[0]}.png`) ;
+    },
+    stakingimg() {
+      return this.type && require(`../../assets/image/${this.type.split('-')[1]}.png`) ;
     },
     isUnlock() {
       return !!this.address;
@@ -132,7 +138,11 @@ export default {
       })
       .then(res => {
         this.approving = false;
-        this.getAllowance(pairs[this.type].hash, YFODIST_HASH)
+        this.allowanceAmount = MAX_NUMBER;
+        const { netVersion, address } = this.$store.state.wallet
+        localStorage.setItem(`${this.type}-${address}-${netVersion}`, this.allowanceAmount)
+      }).catch(err => {
+        this.approving = false;
       });
     },
     unstake() {

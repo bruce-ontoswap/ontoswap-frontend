@@ -11,7 +11,7 @@
 <template>
 <div :class="$style['card']">
   <Space height="24"/>
-  <span :class="$style['img']">🍣</span>
+  <img :class="$style['img']" :src="require(`../../assets/image/${content.title}.png`)"/>
   <Space height="10"/>
   <p :class="$style['title']">{{content.title}}</p>
   <Space height="4"/>
@@ -19,12 +19,12 @@
   <Space height="19"/>
   <p :class="$style['btn']" @click="content.onTab(content)">{{$t('10')}}</p>
   <Space height="15"/>
-  <p :class="$style['gap']"></p>
-  <Space height="6"/>
+  <!-- <p :class="$style['gap']"></p> -->
+  <!-- <Space height="6"/>
   <div :class="$style['apy']">
     <span>APY</span>
     <span>{{content.apy}} %</span>
-  </div>
+  </div> -->
 </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
   text-align: center;
   margin-bottom: 32px;
   .img{
-    font-size: 65px;
+    width: 65px;
   }
   .title{
     font-family: $font-3;

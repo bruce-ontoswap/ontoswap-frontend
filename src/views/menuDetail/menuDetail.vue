@@ -1,6 +1,6 @@
 <template>
   <div :class="$.menu">
-    <Title :title="`🦄 ${type}`" />
+    <Title :title="type" :img="harvestimg"/>
     <Space height="45"/>
     <div :class="$.content">
 
@@ -15,9 +15,9 @@
       <Space width="32"/>
 
       <div :class="$.card">
-        <Space height="32"/>
-        <span :class="$['card-img']">🍣</span>
-        <Space height="26"/>
+        <Space height="15"/>
+        <img :class="$['card-img']" :src="harvestimg" />
+        <Space height="15"/>
         <p :class="$['card-title']">{{rewardsLp}}</p>
         <Space height="4"/>
         <p :class="$['card-sub-title']">YFO {{$t('60')}}</p>
@@ -31,9 +31,9 @@
       <Space width="32"/>
 
       <div :class="$.card">
-        <Space height="32"/>
-        <span :class="$['card-img']">‍🍳</span>
-        <Space height="26"/>
+        <Space height="15"/>
+        <img :class="$['card-img']" :src="stakingimg" />
+        <Space height="15"/>
         <p :class="$['card-title']">{{formatDisplay(stakedLp)}}</p>
         <Space height="4"/>
         <p :class="$['card-sub-title']">{{type}} FLP {{$t('80')}}</p>
